@@ -1,0 +1,17 @@
+<h1>Don't slack, submit!</h1>
+<a href="/articles">View articles</a>
+<br>
+<h3><%= @errors.join(", ") unless @errors.nil? || @errors.empty? %></h3>
+
+<ul>
+  <form action="/articles/new" method="post">
+    <label for="Title">Title</label>
+    <input type="text" id="Title" name="title" value="<%= session[:prev_title] %>" required>
+    <label for="URL">URL</label>
+    <input type="url" id="URL" name="url" value="<%= session[:prev_url] %>" required>
+    <label for="Description">Description</label>
+    <input type="text" id="Description" name="description" value="<%= session[:prev_description] %>" pattern=".{20,}" required title="20 characters or more">
+
+    <input type="submit" value="Submit">
+  </form>
+</ul>
